@@ -2,6 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const router = express.Router();
 let response = {
+    userId: "",
     login: false,
     passwordMissMatch: false,
     userExists: false
@@ -17,10 +18,12 @@ router.get('/', async function(req, res) {
         users.data.forEach((user) => {
             if (user.userId === id) {
                 if (user.password === password) {
+                    response.userId = user.userId;
                     response.login = true;
                     response.userExists = true;
                     response.passwordMissMatch = false;
                 } else {
+                    response.userId = user.userId;
                     response.login = false;
                     response.passwordMissMatch = true;
                     response.userExists = true;
@@ -28,6 +31,7 @@ router.get('/', async function(req, res) {
             }
         });
     } else if (!userExists) {
+        response.userId = id;
         response.login = false;
         response.userExists = false;
         response.passwordMissMatch = false;
