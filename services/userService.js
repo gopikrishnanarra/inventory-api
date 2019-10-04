@@ -35,4 +35,18 @@ const getUserDetails = (users, req) => {
     return response;
 };
 
-module.exports = getUserDetails;
+const canAddUser = (users, userId) => {
+    const found = users.data.find((user)=>{
+        return user.userId === userId
+    });
+    if(found) {
+        return false;
+    } else if(!found) {
+        return true;
+    }
+};
+
+module.exports = {
+    getUserDetails,
+    canAddUser
+};
