@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 let response = {
     userId: "",
     login: false,
@@ -5,7 +7,17 @@ let response = {
     userExists: false
 };
 
-const getUserDetails = (users, req) => {
+
+function getUsersUrl() {
+    return 'https://api.mlab.com/api/1/databases/users/collections/users-list?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ';
+}
+
+async function getUsers() {
+    return await axios.get(getUsersUrl());
+}
+
+const getUserDetails = async (req) => {
+    const users = await getUsers();
     const { id, password } = req.query;
     const userExists = users.data.filter((user) => {
         return user.userId === id
@@ -35,7 +47,8 @@ const getUserDetails = (users, req) => {
     return response;
 };
 
-const canAddUser = (users, userId) => {
+const canAddUser = async (userId) => {
+    const users = await getUsers();
     const found = users.data.find((user)=>{
         return user.userId === userId
     });
@@ -46,7 +59,26 @@ const canAddUser = (users, userId) => {
     }
 };
 
+async function addNewUser(req, res) {
+    console.log(req.body);
+    try {
+        await axios.post(getUsersUrl(), req.body);
+    } catch (e) {
+        console.log(e);
+        res.send({
+            "userAdded": false,
+            "userExists": false
+        });
+    }
+    res.send({
+        "userAdded": true,
+        "userExists": false
+    });
+}
+
 module.exports = {
     getUserDetails,
-    canAddUser
+    canAddUser,
+    getUsers,
+    addNewUser
 };
