@@ -1,4 +1,4 @@
-runtime: nodejs10
-handlers:
-- url: .*
-  script: auto
+# [START app_yaml]
+env: flex
+runtime: nodejs
+# [END app_yaml]
