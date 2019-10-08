@@ -18,15 +18,7 @@ router.get('/all', async function(req, res) {
 });
 
 router.post('/create', async function(req, res) {
-    const isNewUser = await canAddUser(req.body.userId);
-    if (isNewUser) {
-        await addNewUser(req, res);
-    } else if (!isNewUser) {
-        res.send({
-            "userAdded": false,
-            "userExists": true
-        });
-    }
+    await addNewUser(req, res);
 });
 
 module.exports = router;

@@ -47,38 +47,22 @@ const getUserDetails = async (req) => {
     return response;
 };
 
-const canAddUser = async (userId) => {
-    const users = await getUsers();
-    const found = users.data.find((user)=>{
-        return user.userId === userId
-    });
-    if(found) {
-        return false;
-    } else if(!found) {
-        return true;
-    }
-};
-
 async function addNewUser(req, res) {
-    console.log(req.body);
     try {
         await axios.post(getUsersUrl(), req.body);
     } catch (e) {
         console.log(e);
         res.send({
-            "userAdded": false,
-            "userExists": false
+            "userAdded": false
         });
     }
     res.send({
-        "userAdded": true,
-        "userExists": false
+        "userAdded": true
     });
 }
 
 module.exports = {
     getUserDetails,
-    canAddUser,
     getUsers,
     addNewUser
 };
