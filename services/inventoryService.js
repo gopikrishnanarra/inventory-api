@@ -9,6 +9,12 @@ async function addItem(req, res) {
     await axios.post(INVENTORY_URL, req.body);
     res.send({})
 }
+async function editItem(req, res) {
+    const url = `https://api.mlab.com/api/1/databases/inventory/collections/inventory/${req.query.id}?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ`;
+
+    await axios.put(url, req.body);
+    res.send('ok')
+}
 async function deleteItem(id, res) {
     const DELETE_URL = `https://api.mlab.com/api/1/databases/inventory/collections/inventory/${id}?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ`
     await axios.delete(DELETE_URL);
@@ -18,5 +24,6 @@ async function deleteItem(id, res) {
 module.exports = {
     getInventory,
     addItem,
+    editItem,
     deleteItem
 }

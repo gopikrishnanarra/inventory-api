@@ -61,8 +61,21 @@ async function addNewUser(req, res) {
     });
 }
 
+async function resetUser(req, res) {
+    const updateUserUrl = `https://api.mlab.com/api/1/databases/users/collections/users-list/${req.query.id}?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ`
+
+    try {
+        await axios.put(updateUserUrl, req.body);
+    } catch (e) {
+        console.log(e);
+        res.send(e);
+    }
+    res.send('ok');
+}
+
 module.exports = {
     getUserDetails,
     getUsers,
-    addNewUser
+    addNewUser,
+    resetUser
 };

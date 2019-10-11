@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getUserDetails, getUsers, canAddUser, addNewUser}  = require('../services/userService');
+const { getUserDetails, getUsers, resetUser, addNewUser}  = require('../services/userService');
 
 router.get('/userDetails', async function(req, res) {
     const response = await getUserDetails(req);
@@ -19,6 +19,10 @@ router.get('/all', async function(req, res) {
 
 router.post('/create', async function(req, res) {
     await addNewUser(req, res);
+});
+
+router.put('/resetUser', async function(req, res) {
+    await resetUser(req, res);
 });
 
 module.exports = router;
