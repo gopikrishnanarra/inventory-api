@@ -1,3 +1,5 @@
+const axios = require('axios');
+
 let response = {
     userId: "",
     login: false,
@@ -5,7 +7,17 @@ let response = {
     userExists: false
 };
 
-const getUserDetails = (users, req) => {
+
+function getUsersUrl() {
+    return 'https://api.mlab.com/api/1/databases/users/collections/users-list?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ';
+}
+
+async function getUsers() {
+    return await axios.get(getUsersUrl());
+}
+
+const getUserDetails = async (req) => {
+    const users = await getUsers();
     const { id, password } = req.query;
     const userExists = users.data.filter((user) => {
         return user.userId === id
@@ -35,18 +47,35 @@ const getUserDetails = (users, req) => {
     return response;
 };
 
-const canAddUser = (users, userId) => {
-    const found = users.data.find((user)=>{
-        return user.userId === userId
-    });
-    if(found) {
-        return false;
-    } else if(!found) {
-        return true;
+async function addNewUser(req, res) {
+    try {
+        await axios.post(getUsersUrl(), req.body);
+    } catch (e) {
+        console.log(e);
+        res.send({
+            "userAdded": false
+        });
     }
-};
+    res.send({
+        "userAdded": true
+    });
+}
+
+async function resetUser(req, res) {
+    const updateUserUrl = `https://api.mlab.com/api/1/databases/users/collections/users-list/${req.query.id}?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ`
+
+    try {
+        await axios.put(updateUserUrl, req.body);
+    } catch (e) {
+        console.log(e);
+        res.send(e);
+    }
+    res.send('ok');
+}
 
 module.exports = {
     getUserDetails,
-    canAddUser
+    getUsers,
+    addNewUser,
+    resetUser
 };

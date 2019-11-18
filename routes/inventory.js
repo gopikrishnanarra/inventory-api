@@ -1,10 +1,18 @@
 const express = require('express');
-const axios = require('axios');
 const router = express.Router();
+const { getInventory, addItem, deleteItem, editItem }  = require('../services/inventoryService');
 
 router.get('/', async function(req, res) {
-    const inventory = await axios.get("https://api.mlab.com/api/1/databases/inventory/collections/inventory?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ")
-    res.send(inventory.data);
+    await getInventory(res);
+});
+router.post('/addItem', async function(req, res) {
+    await addItem(req, res);
+});
+router.put('/editItem', async function(req, res) {
+    await editItem(req, res);
+});
+router.delete('/delete', async function(req, res) {
+    await deleteItem(req.query.id, res);
 });
 
 module.exports = router;
