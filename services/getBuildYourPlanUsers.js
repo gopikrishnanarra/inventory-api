@@ -17,7 +17,7 @@ async function getAllUsers() {
 }
 
 const getUsersDetails = async (req) => {
-    const users = await getUsers();
+    const users = await getAllUsers();
     const { id, password } = req.query;
     const userExists = users.data.filter((user) => {
         return user.userId === id
