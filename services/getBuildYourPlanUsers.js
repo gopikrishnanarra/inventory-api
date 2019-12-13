@@ -12,7 +12,7 @@ function getUsersUrl() {
     return 'https://api.mlab.com/api/1/databases/users/collections/buildyourplanusers?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ';
 }
 
-async function getUsers() {
+async function getAllUsers() {
     return await axios.get(getUsersUrl());
 }
 
@@ -75,7 +75,7 @@ async function resetUser(req, res) {
 
 module.exports = {
     getUsersDetails,
-    getUsers,
+    getAllUsers,
     addNewUser,
     resetUser
 };
