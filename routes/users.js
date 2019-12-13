@@ -1,9 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const { getUserDetails, getUsers, resetUser, addNewUser}  = require('../services/userService');
+const { getUsersDetails }  = require('../services/getBuildyourplanusers');
 
 router.get('/userDetails', async function(req, res) {
     const response = await getUserDetails(req);
+    res.send(response);
+});
+router.get('/buildYourPlanUserDetails', async function(req, res) {
+    const response = await getUsersDetails(req);
     res.send(response);
 });
 router.get('/all', async function(req, res) {

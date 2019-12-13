@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="496255fb-c5a2-4058-850a-1587d4dff8a6" name="Default Changelist" comment="add cloud build file">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="496255fb-c5a2-4058-850a-1587d4dff8a6" name="Default Changelist" comment="add cloud build file" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,14 +14,6 @@
         <option value="JavaScript File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>axios</find>
-      <find>require</find>
-      <find>require(</find>
-      <find>import</find>
-    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -93,7 +83,8 @@
       <workItem from="1570202939748" duration="8379000" />
       <workItem from="1570219035932" duration="115000" />
       <workItem from="1573847994152" duration="250000" />
-      <workItem from="1574107791511" duration="313000" />
+      <workItem from="1574107791511" duration="413000" />
+      <workItem from="1576272871406" duration="1513000" />
     </task>
     <task id="LOCAL-00001" summary="add cloud build file">
       <created>1570075168844</created>
