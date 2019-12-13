@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="496255fb-c5a2-4058-850a-1587d4dff8a6" name="Default Changelist" comment="add cloud build file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/users.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/getBuildYourPlanUsers.js" beforeDir="false" afterPath="$PROJECT_DIR$/services/getBuildYourPlanUsers.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +36,7 @@
     <property name="TF_FMT" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../interest-calculator" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../inventory" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
