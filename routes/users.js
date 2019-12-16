@@ -32,7 +32,7 @@ router.get('/buildYourPlanUserDetails/all', async function(req, res) {
     res.send(allUserIds);
 });
 
-router.post('/users/create', async function(req, res) {
+router.post('/addUser', async function(req, res) {
     await addUser(req, res);
 });
 
@@ -40,7 +40,7 @@ router.post('/create', async function(req, res) {
     await addNewUser(req, res);
 });
 
-router.put('/users/resetUser', async function(req, res) {
+router.put('/reset', async function(req, res) {
     await reset(req, res);
 });
 router.put('/resetUser', async function(req, res) {
