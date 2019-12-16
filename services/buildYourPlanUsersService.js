@@ -47,7 +47,7 @@ const getUsersDetails = async (req) => {
     return response;
 };
 
-async function addNewUser(req, res) {
+async function addUser(req, res) {
     try {
         await axios.post(getUsersUrl(), req.body);
     } catch (e) {
@@ -61,8 +61,8 @@ async function addNewUser(req, res) {
     });
 }
 
-async function resetUser(req, res) {
-    const updateUserUrl = `https://api.mlab.com/api/1/databases/users/collections/users-list/${req.query.id}?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ`
+async function reset(req, res) {
+    const updateUserUrl = `https://api.mlab.com/api/1/databases/users/collections/buildyourplanusers/${req.query.id}?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ`
 
     try {
         await axios.put(updateUserUrl, req.body);
@@ -76,6 +76,6 @@ async function resetUser(req, res) {
 module.exports = {
     getUsersDetails,
     getAllUsers,
-    addNewUser,
-    resetUser
+    addUser,
+    reset
 };
