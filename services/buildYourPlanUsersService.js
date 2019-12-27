@@ -22,7 +22,7 @@ const getUsersDetails = async (req) => {
     const userExists = users.data.filter((user) => {
         return user.userId === id
     });
-    if (userExists) {
+    if (userExists.length > 0) {
         users.data.forEach((user) => {
             if (user.userId === id) {
                 if (user.password === password) {
@@ -38,7 +38,7 @@ const getUsersDetails = async (req) => {
                 }
             }
         });
-    } else if (!userExists) {
+    } else if (userExists.length === 0) {
         response.userId = id;
         response.login = false;
         response.userExists = false;
