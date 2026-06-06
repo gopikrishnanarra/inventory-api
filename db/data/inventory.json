@@ -1,0 +1,26 @@
+[
+  {
+    "_id": {
+      "$oid": "5f1a2b3c4d5e6f7a8b9c0d11"
+    },
+    "name": "Widget",
+    "quantity": 100,
+    "price": 9.99
+  },
+  {
+    "_id": {
+      "$oid": "5f1a2b3c4d5e6f7a8b9c0d12"
+    },
+    "name": "Gadget",
+    "quantity": 42,
+    "price": 19.5
+  },
+  {
+    "_id": {
+      "$oid": "5f1a2b3c4d5e6f7a8b9c0d13"
+    },
+    "name": "Gizmo",
+    "quantity": 7,
+    "price": 4.25
+  }
+]

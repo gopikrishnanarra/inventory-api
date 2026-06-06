@@ -1,4 +1,5 @@
-const axios = require('axios');
+const db = require('../db/localDb');
+const USERS_COLLECTION = 'buildyourplanusers';
 
 let response = {
     userId: "",
@@ -7,13 +8,8 @@ let response = {
     userExists: false
 };
 
-
-function getUsersUrl() {
-    return 'https://api.mlab.com/api/1/databases/users/collections/buildyourplanusers?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ';
-}
-
 async function getAllUsers() {
-    return await axios.get(getUsersUrl());
+    return { data: db.getAll(USERS_COLLECTION) };
 }
 
 const getUsersDetails = async (req) => {
@@ -49,10 +45,10 @@ const getUsersDetails = async (req) => {
 
 async function addUser(req, res) {
     try {
-        await axios.post(getUsersUrl(), req.body);
+        db.insert(USERS_COLLECTION, req.body);
     } catch (e) {
         console.log(e);
-        res.send({
+        return res.send({
             "userAdded": false
         });
     }
@@ -62,13 +58,11 @@ async function addUser(req, res) {
 }
 
 async function reset(req, res) {
-    const updateUserUrl = `https://api.mlab.com/api/1/databases/users/collections/buildyourplanusers/${req.query.id}?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ`
-
     try {
-        await axios.put(updateUserUrl, req.body);
+        db.update(USERS_COLLECTION, req.query.id, req.body);
     } catch (e) {
         console.log(e);
-        res.send(e);
+        return res.send(e);
     }
     res.send('ok');
 }

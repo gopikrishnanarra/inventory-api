@@ -1,0 +1,23 @@
+[
+  {
+    "_id": {
+      "$oid": "5f1a2b3c4d5e6f7a8b9c0e11"
+    },
+    "userId": "alice",
+    "password": "password123"
+  },
+  {
+    "_id": {
+      "$oid": "5f1a2b3c4d5e6f7a8b9c0e12"
+    },
+    "userId": "bob",
+    "password": "secret"
+  },
+  {
+    "userId": "gopik",
+    "password": "gopik",
+    "_id": {
+      "$oid": "6bf527008f85616cbc706b15"
+    }
+  }
+]

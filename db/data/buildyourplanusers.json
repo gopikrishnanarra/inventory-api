@@ -1,0 +1,12 @@
+[
+  {
+    "_id": { "$oid": "5f1a2b3c4d5e6f7a8b9c0f11" },
+    "userId": "carol",
+    "password": "plan123"
+  },
+  {
+    "_id": { "$oid": "5f1a2b3c4d5e6f7a8b9c0f12" },
+    "userId": "dave",
+    "password": "buildit"
+  }
+]

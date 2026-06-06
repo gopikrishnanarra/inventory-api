@@ -1,24 +1,40 @@
-const axios = require('axios');
-const INVENTORY_URL = "https://api.mlab.com/api/1/databases/inventory/collections/inventory?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ";
+const db = require('../db/localDb');
+const COLLECTION = 'inventory';
 
 async function getInventory(res) {
-    const inventory = await axios.get(INVENTORY_URL);
-    res.send(inventory.data);
+    try {
+        res.send(db.getAll(COLLECTION));
+    } catch (e) {
+        console.error(e);
+        res.status(500).send({ error: 'Failed to load inventory' });
+    }
 }
 async function addItem(req, res) {
-    await axios.post(INVENTORY_URL, req.body);
-    res.send({})
+    try {
+        db.insert(COLLECTION, req.body);
+        res.send({});
+    } catch (e) {
+        console.error(e);
+        res.status(500).send({ error: 'Failed to add item' });
+    }
 }
 async function editItem(req, res) {
-    const url = `https://api.mlab.com/api/1/databases/inventory/collections/inventory/${req.query.id}?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ`;
-
-    await axios.put(url, req.body);
-    res.send('ok')
+    try {
+        db.update(COLLECTION, req.query.id, req.body);
+        res.send('ok');
+    } catch (e) {
+        console.error(e);
+        res.status(500).send({ error: 'Failed to edit item' });
+    }
 }
 async function deleteItem(id, res) {
-    const DELETE_URL = `https://api.mlab.com/api/1/databases/inventory/collections/inventory/${id}?apiKey=kIOuLscCmhbeSOoBEtJUYPV6vy1TMIaQ`
-    await axios.delete(DELETE_URL);
-    res.send({})
+    try {
+        db.remove(COLLECTION, id);
+        res.send({});
+    } catch (e) {
+        console.error(e);
+        res.status(500).send({ error: 'Failed to delete item' });
+    }
 }
 
 module.exports = {
