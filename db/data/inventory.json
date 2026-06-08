@@ -22,5 +22,68 @@
     "name": "Gizmo",
     "quantity": 7,
     "price": 4.25
+  },
+  {
+    "_id": {
+      "$oid": "6517ca11a4338e0919260aed"
+    },
+    "userId": "gopik",
+    "item": "rice",
+    "quantity": "6",
+    "price": "60.0"
+  },
+  {
+    "userId": "gopik",
+    "item": "jeera",
+    "quantity": "6",
+    "price": "15.15",
+    "_id": {
+      "$oid": "a0d29d124ceaf7eaefc00c59"
+    }
+  },
+  {
+    "userId": "gopik",
+    "item": "rice",
+    "quantity": "6",
+    "price": "60.0",
+    "_id": {
+      "$oid": "6f9db88bf564ddc780941b60"
+    }
+  },
+  {
+    "userId": "gopik",
+    "item": "jeera",
+    "quantity": "5",
+    "price": "15.7",
+    "_id": {
+      "$oid": "422f343f2fa7074518275e09"
+    }
+  },
+  {
+    "userId": "gopik",
+    "item": "salt",
+    "quantity": "2",
+    "price": "10",
+    "_id": {
+      "$oid": "0a3a0d209ccc10731d0376ec"
+    }
+  },
+  {
+    "userId": "gopik",
+    "item": "tt",
+    "quantity": "6",
+    "price": "66.66",
+    "_id": {
+      "$oid": "b8f76d360e1a5e95a86de0b2"
+    }
+  },
+  {
+    "userId": "ngk",
+    "item": "ttt",
+    "quantity": "666",
+    "price": "6.6",
+    "_id": {
+      "$oid": "d1e235ce1d95b6a13e71dc32"
+    }
   }
 ]

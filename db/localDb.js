@@ -45,10 +45,17 @@ function getAll(collection) {
 
 function insert(collection, doc) {
     const docs = read(collection);
-    const record = { ...doc, _id: { $oid: newOid() } };
-    docs.push(record);
+    // mLab accepted either a single document or an array of documents.
+    // Normalize to an array so each element is stored as its own flat record
+    // (spreading an array directly would nest it under numeric keys like "0").
+    const incoming = Array.isArray(doc) ? doc : [doc];
+    const inserted = incoming.map((d) => {
+        const record = { ...d, _id: { $oid: newOid() } };
+        docs.push(record);
+        return record;
+    });
     write(collection, docs);
-    return record;
+    return Array.isArray(doc) ? inserted : inserted[0];
 }
 
 function update(collection, id, changes) {

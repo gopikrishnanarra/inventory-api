@@ -1,9 +1,15 @@
 const db = require('../db/localDb');
 const COLLECTION = 'inventory';
 
-async function getInventory(res) {
+async function getInventory(req, res) {
     try {
-        res.send(db.getAll(COLLECTION));
+        const { userId } = req.query;
+        const all = db.getAll(COLLECTION);
+        // admin sees the entire store; any other user sees only their own items.
+        const items = userId === 'admin'
+            ? all
+            : all.filter((item) => item.userId === userId);
+        res.send(items);
     } catch (e) {
         console.error(e);
         res.status(500).send({ error: 'Failed to load inventory' });

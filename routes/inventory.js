@@ -3,7 +3,7 @@ const router = express.Router();
 const { getInventory, addItem, deleteItem, editItem }  = require('../services/inventoryService');
 
 router.get('/', async function(req, res) {
-    await getInventory(res);
+    await getInventory(req, res);
 });
 router.post('/addItem', async function(req, res) {
     await addItem(req, res);

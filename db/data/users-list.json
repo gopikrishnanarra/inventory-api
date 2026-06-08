@@ -19,5 +19,19 @@
     "_id": {
       "$oid": "6bf527008f85616cbc706b15"
     }
+  },
+  {
+    "userId": "ngk",
+    "password": "ngk",
+    "_id": {
+      "$oid": "78a97f63c6fb720190580ffe"
+    }
+  },
+  {
+    "userId": "admin",
+    "password": "admin",
+    "_id": {
+      "$oid": "5f1a2b3c4d5e6f7a8b9c0e99"
+    }
   }
 ]
